@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<!-- ドキュメントタイプ宣言と呼ばれ、HTMLのバージョンを宣言します。 -->
+<!-- <!DPCTYPE html>でHTML5モードで表示します。必須で記述します。 -->
+<html lang="ja">
+  <!-- 以下がhtml要素であり、ブラウザに対して日本語であることを認識させます。 -->
+  <head>
+    <meta charset="utf-8" />
+    <title>サイトタイトル</title>
+    <!-- サイトのタイトルを記述します。ブラウザのタブに表示される部分です。 -->
+    <meta name="description" content="ディスクリプションを入力" />
+    <!-- サイトの概要を記述します。ブラウザ検索した際に、サイト名の下に出てきます。 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
+    <!----- header----->
+    <header>ヘッダー</header>
+    <!----- /header ----->
+
+    <!----- main ----->
+    <article>
+      <h1>生年月日おみくじ</h1>
+      <section>
+        <h2>2022年の運勢</h2>
+        <p>2022年のあなたの運勢を占います</p>
+        <input
+          type="number"
+          placeholder="例:1980"
+          min="1900"
+          max="2022"
+          value="1992"
+          id="year"
+        />年
+        <br />
+        <input
+          type="number"
+          placeholder="例:01"
+          min="1"
+          max="12"
+          value="1"
+          id="month"
+        />月
+        <br />
+        <input
+          type="number"
+          placeholder="例:01"
+          min="1"
+          max="31"
+          value="28"
+          id="date"
+        />日
+        <br />
+        <input
+          type="button"
+          value="おみくじを引く"
+          onclick="OnButtonClick();"
+          type="btn"
+        />
+        <p>おみくじの結果：<span id="result"></span></p>
+      </section>
+    </article>
+
+    <script type="text/javascript" src="main.js"></script>
+  </body>
+</html>

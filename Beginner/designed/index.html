@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<!-- ドキュメントタイプ宣言と呼ばれ、HTMLのバージョンを宣言します。 -->
+<!-- <!DPCTYPE html>でHTML5モードで表示します。必須で記述します。 -->
+<html lang="ja">
+  <!-- 以下がhtml要素であり、ブラウザに対して日本語であることを認識させます。 -->
+  <head>
+    <meta charset="utf-8" />
+    <title>おみくじアプリ@島の編集室 SENKA</title>
+    <!-- サイトのタイトルを記述します。ブラウザのタブに表示される部分です。 -->
+    <meta name="description" content="おみくじアプリです。" />
+    <!-- サイトの概要を記述します。ブラウザ検索した際に、サイト名の下に出てきます。 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <!----- header----->
+    <header>
+      <div class="navbar navbar-dark bg-dark shadow-sm">
+        <div class="container">
+          <a href="#" class="navbar-brand d-flex align-items-center">
+            <strong>生年月日おみくじ</strong>
+          </a>
+        </div>
+      </div>
+    </header>
+    <!----- /header ----->
+
+    <!----- main ----->
+    <article>
+      <div class="container">
+        <div class="p-5 mb-4 bg-light rounded-3">
+          <div class="container-fluid py-5">
+            <div class="row justify-content-md-center">
+              <h1 class="display-3 text-center">生年月日おみくじ</h1>
+              <p class="display-5 text-center">
+                2022年のあなたの運勢を占います
+              </p>
+              <div class="col input-group input-group-lg">
+                <span class="input-group-text">年</span>
+                <input
+                  type="number"
+                  placeholder="例:1980"
+                  min="1900"
+                  max="2022"
+                  value="1980"
+                  id="year"
+                  class="form-control"
+                />
+                <br />
+              </div>
+              <div class="col input-group input-group-lg">
+                <span class="input-group-text">年</span>
+                <input
+                  type="number"
+                  placeholder="例:01"
+                  min="1"
+                  max="12"
+                  value="1"
+                  id="month"
+                  class="form-control"
+                />
+                <br />
+              </div>
+              <div class="col input-group input-group-lg">
+                <span class="input-group-text">日</span>
+                <input
+                  type="number"
+                  placeholder="例:01"
+                  min="1"
+                  max="31"
+                  value="1"
+                  id="date"
+                  class="form-control"
+                />
+                <br />
+              </div>
+            </div>
+
+            <div class="row justify-content-md-center">
+              <div class="col text-center">
+                <input
+                  type="button"
+                  value="おみくじを引く"
+                  onclick="OnButtonClick();"
+                  id="btn"
+                  class="btn btn-lg btn-danger mt-3"
+                />
+              </div>
+              <p class="display-5 text-center mt-3">
+                おみくじの結果：<span
+                  class="badge bg-danger"
+                  id="result"
+                ></span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!----- /main ----->
+
+    <script type="text/javascript" src="main.js"></script>
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
+
+<style type="text/css">
+  body {
+    background-image: url('backgroundimage.jpg'); /* 画像 */
+    background-size: cover; /* 全画面 */
+    background-attachment: fixed; /* 固定 */
+    background-position: center center; /* 縦横中央 */
+  }
+</style>
