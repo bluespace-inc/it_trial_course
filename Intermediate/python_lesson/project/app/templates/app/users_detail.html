@@ -1,7 +1,10 @@
 {% extends 'app/base.html' %} {% block content %}
 <h2 class="user-name">@{{ user.username }}</h2>
-{% for photo in photos %}
-<a href="{% url 'app:photos_detail' photo.id %}">
-  <img src="{{ photo.image.url }}" class="photo-img" />
-</a>
-{% endfor %} {% endblock %}
+
+{% if photos.count != 0 %}
+<p>投稿<strong>{{ photos.count }}</strong>件</p>
+{% else %} {% if user == request.user %}
+<p>初めての投稿をしてみましょう!</p>
+{% else %}
+<p>@{{ user.username }}さんはまだ投稿していません。</p>
+{% endif %} {% endif %} {% include 'app/photos_list.html' %} {% endblock %}
