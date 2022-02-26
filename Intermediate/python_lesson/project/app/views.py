@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.models import User
-from .models import Photo
+from .models import Photo, Category
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
@@ -54,6 +54,12 @@ def photos_delete(request, pk):
     photo.delete()
     return redirect('app:users_detail', request.user.id)
 
+def photos_category(request, category):
+    category = get_object_or_404(Category, title=category)
+    photos = Photo.objects.filter(category=category).order_by('-created_at')
+    return render(
+        request, 'app/index.html', {'photos': photos, 'category': category}
+    )
 
 def index(request):
     # Photoインスタンスを全件取得
