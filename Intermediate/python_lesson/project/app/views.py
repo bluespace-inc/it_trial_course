@@ -1,8 +1,12 @@
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.models import User
+from .models import Photo
 
 def index(request):
-    return render(request, 'app/index.html')
+    # Photoインスタンスを全件取得
+    photos = Photo.objects.all().order_by('-created_at')
+    # 取得したPhotoインスタンスをテンプレートに渡す
+    return render(request, 'app/index.html', {'photos': photos})
 
 def users_detail(request, pk):
     user = get_object_or_404(User, pk=pk)
