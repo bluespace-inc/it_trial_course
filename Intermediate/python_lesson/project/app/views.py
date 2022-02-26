@@ -3,6 +3,11 @@ from django.contrib.auth.models import User
 from .models import Photo
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login
+from django.contrib.auth.decorators import login_required
+from .forms import PhotoForm
+from django.contrib import messages
+from django.views.decorators.http import require_POST
+
 
 def signup(request):
     if request.method == 'POST':
@@ -24,6 +29,30 @@ def signup(request):
         else:
             form = UserCreationForm()
         return render(request, 'app/signup.html', {'form': form})
+
+@login_required
+def photos_new(request):
+    if request.method == "POST":
+        form = PhotoForm(request.POST, request.FILES)
+        if form.is_valid():
+            photo = form.save(commit=False)
+            photo.user = request.user
+            photo.save()
+            messages.success(request, "投稿が完了しました!") 
+        return redirect('app:users_detail', pk=request.user.pk)
+    else:
+        form = PhotoForm()
+    return render(request, 'app/photos_new.html', {'form': form})
+
+def photos_detail(request, pk):
+    photo = get_object_or_404(Photo, pk=pk)
+    return render(request, 'app/photos_detail.html', {'photo': photo})
+
+@require_POST
+def photos_delete(request, pk):
+    photo = get_object_or_404(Photo, pk=pk, user=request.user)
+    photo.delete()
+    return redirect('app:users_detail', request.user.id)
 
 
 def index(request):
