@@ -33,5 +33,23 @@ function OnButtonClick() {
 
   // html上の結果(id="result")を特定、innerHTMLで占い結果を差し込む
   target = document.getElementById('result');
-  target.innerHTML = fortune;
+  target.innerHTML = JSON.stringify(data);
+}
+
+function GetData() {
+  const data = [
+    { id: 0, title: '1です', content: '', tag: [0, 1, 2, 3, 4] },
+    { id: 1, title: '2です', content: '', tag: [0, 1, 2, 3, 4] },
+    { id: 2, title: '3です', content: '', tag: [0, 1, 2, 3, 4] },
+    { id: 3, title: '4です', content: '', tag: [0, 1, 2, 3, 4] },
+    { id: 4, title: '5', content: '', tag: [0, 1, 2, 3, 4] },
+    { id: 5, title: '6', content: '', tag: [0, 1, 2, 3, 4] },
+    { id: 6, title: '7', content: '', tag: [0, 1, 2, 3, 4] },
+  ];
+  customData = [];
+  for (let i = 0; i < data.length; i++) {
+    customData.push(data[i].title);
+  }
+  dataField = document.getElementById('data');
+  dataField.innerHTML = JSON.stringify(customData);
 }
